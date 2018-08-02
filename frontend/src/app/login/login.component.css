@@ -1,0 +1,53 @@
+
+h2{
+    padding-left: 20px;
+    color: #100B32;
+}
+
+#submitbtn{
+    margin: 6px;
+}
+#myModal{
+    font-family: Georgia;
+}
+#message{
+    color: red;
+}
+.modal-header{
+    background-color: #100B32;
+}
+.modal-title{
+    color: aliceblue;
+}
+.close{
+    color: aliceblue;
+}
+.btn{
+    letter-spacing: 2px;
+}
+.modal-body{
+    background-color: beige;
+    overflow-y: auto;
+    color: black;
+}
+.btn-googleplus {
+    background: #E93F2E;
+    border-radius: 0;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #b72213;
+  }
+  .btn-googleplus:link, .btn-googleplus:visited {
+    color: #fff;
+  }
+  .btn-googleplus:active, .btn-googleplus:hover {
+    background: #b72213;
+    color: #fff;
+  }
+  #registerModal{
+      font-size: 13px;
+  }
+.btn-link{
+    font-size: 15px;
+}

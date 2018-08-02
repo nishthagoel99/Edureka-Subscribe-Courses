@@ -1,0 +1,120 @@
+<br>
+<h2 class='heading1 ' id='demotitle'> {{detail.CourseTitle}}</h2>
+<div class="container-fluid text-center " ><br>
+    <img class="img-responsive pull-left" src={{detail.CourseImage}} id='image'>
+    <!--If the video for the course is available-->
+    <div *ngIf='videoflag' (click)='showvideo()' data-toggle="modal"  data-target="#myModal">
+  <div  class="prevideopanel">
+    <div class=" d-flex justify-content-center overlay" >
+        <h5 ><article>Watch a demo!</article></h5>
+        <img class="img-responsive"  src='https://cdn1.iconfinder.com/data/icons/google_jfk_icons_by_carlosjj/512/youtube.png' class='icon'>
+  </div>
+  </div>
+  </div>
+  <br><h2>Rating: {{detail.CourseRating}}</h2><br>
+  <h2><b><em>Price: <i class="fa fa-inr"></i> {{detail.CourseValue}}</em></b></h2>
+ <br>
+ <br>
+</div>
+<br>
+<div class="text-center" >
+  <button type="button" class="btn btn-lg btn-primary" (click)='count()' *ngIf='!messageflag' >Enroll now!</button>
+  <button type="button" class="btn btn-lg btn-primary"  *ngIf='messageflag' disabled>Enrolled</button>
+</div>
+
+<!--If the user clicked the enroll button-->
+<div *ngIf='getcountt()'>
+  <!--If the user has not logged in-->
+        <div  *ngIf='gettoken()' >
+          <app-login></app-login>
+        </div>
+        <!---->
+        <!--If the user has logged in-->
+        <div  *ngIf='!gettoken()' (click)='enrolling()'>
+            <app-enrolled></app-enrolled>
+           </div>
+           <!---->
+</div>
+<!--video modal-->
+<div *ngIf='videoflag'>
+<div class="modal fade in" id="myModal" >
+    <div class="modal-dialog modal-lg " >
+       
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" >Demo for {{detail.CourseTitle}}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+          <iframe height="400px" [src]='getvideo(detail)' frameborder="0" allowfullscreen></iframe>
+</div>
+</div></div></div>
+<button id="openModal"  #openModal [hidden]="true" ></button>
+<hr>
+<br>
+
+<!--Shows the features of the course-->
+<div class="container-fluid">
+<app-aws></app-aws>
+</div>
+<!---->
+
+<!--Sharing the course on social media when the person has successfully enrolled the course-->
+<br>
+<div class="container" *ngIf='messageflag'>
+  <div class="row">
+      <h2>Share with: </h2>
+    <div class="col-md-3">
+      <a class="fa fa-twitter share-base share-twitter"
+       onclick="window.open('https://twitter.com/intent/tweet?text=I have successfully enrolled the Edureka course of '+
+       encodeURIComponent(document.getElementById('demotitle').innerHTML)+
+       '&url='+ encodeURIComponent(document.URL))"></a>
+    </div>
+
+  <div class="col-md-3">
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <a class="fa fa-google-plus share-base share-google-plus" 
+       href="https://plus.google.com/share?text=I have successfully enrolled the edureka course of {{detail.CourseTitle}}!" 
+       onclick="window.open(this.href);return false;"></a>
+      
+  </div>
+  <div class="col-md-3">
+      <a class="fa fa-linkedin share-base share-linked-in" 
+       onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) +
+        '&title=' + encodeURIComponent(document.title)+
+        '&text=I have successfully enrolled the edureka course of '+encodeURIComponent(document.getElementById('demotitle').innerHTML)); 
+        return false;"></a>
+  </div>
+  </div>
+  <br>
+</div>
+
+<!--Sharing the course on social media when the person has not enrolled the course-->
+<div class="container" *ngIf='!messageflag'>
+    <div class="row">
+        <h2>Share with: </h2>
+      <div class="col-md-3">
+        <a class="fa fa-twitter share-base share-twitter"
+         onclick="window.open('https://twitter.com/intent/tweet?text=Checkout the Edureka course of '
+         +encodeURIComponent(document.getElementById('demotitle').innerHTML)+
+         '&url='+ encodeURIComponent(document.URL))"></a>
+      </div>
+  
+    <div class="col-md-3">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <a class="fa fa-google-plus share-base share-google-plus"
+          href="https://plus.google.com/share?text=Checkout the Edureka course of {{detail.CourseTitle}}!" 
+          onclick="window.open(this.href);return false;"></a>
+        
+    </div>
+    <div class="col-md-3">
+        <a class="fa fa-linkedin share-base share-linked-in" 
+         onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) +
+          '&title=' + encodeURIComponent(document.title)+
+          '&text=Checkout the Edureka course of '+encodeURIComponent(document.getElementById('demotitle').innerHTML)); 
+          return false;"></a>
+    </div>
+    </div>
+    <br>
+  </div>
+  
+  

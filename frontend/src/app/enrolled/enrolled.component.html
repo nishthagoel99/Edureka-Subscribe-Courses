@@ -1,0 +1,30 @@
+<div class="modal fade in" id="myModal" >
+    <div class="modal-dialog " >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Enrolled!</h2>
+          <button type="button" class="close"  (click)='gotocourse()' data-dismiss="modal" >&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div *ngIf='checkmsg()'>
+            ALREADY ENROLLED xD
+          </div>
+          <div *ngIf='!checkmsg()'>
+              You have successfully enrolled the course!
+            </div>
+            </div>
+
+        <div data-dismiss="modal"></div>
+
+        <div class="modal-footer">
+            <button type="button" id='closebtn' class="btn btn-lg btn-danger" data-dismiss="modal" (click)='gotocourse()' >Close</button>
+        
+        </div>
+      </div>
+      </div>
+    </div>
+
+  <button id="openModal" #openModal [hidden]="true" 
+  data-toggle="modal"  data-target="#myModal"  ></button>
+  

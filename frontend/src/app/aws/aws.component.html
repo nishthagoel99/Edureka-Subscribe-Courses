@@ -1,0 +1,60 @@
+
+<div class="jumbotron">
+<div class="panel-group acitemx" id="accordion"  role="tabpanel" aria-multiselectable="true"  > 
+<div class="panel panel-default main"  *ngFor='let title of titles,let ind=index'>
+<div class="panel-heading  "  [id]="'heading'+ind">
+<ul><h2 class="panel-title" >
+<li><a class="accordion-toggle" role='button' (click)='toggle1(title)'  [attr.aria-controls]="'collapse'+ind" data-toggle='collapse' data-parent='#accordion'  [attr.data-target]="'#data1'+ ind">{{title.Main}}<span class="pull-right"><i class="fa fa-angle-down" aria-hidden="true"></i></span></a> </li>  
+</h2></ul></div>
+<div [id]='"data1"+ ind'  class="panel-collapse collapse "  [attr.aria-labelledby]="'heading'+ind" >
+<div class="panel-body" >
+<div class="panel-group" id="accordion21" >
+<div class="panel inside" *ngFor='let Y of data ,let indi=index' >
+<div class="panel-heading  " >
+        <ul><h3 class="panel-title">
+    <a role="button" (click)='toggle(Y)'  data-toggle='collapse'  data-parent='#accordion21'   [attr.data-target]="'#data2'+indi+ind" > {{Y.Heading}} <i class="fa fa-plus-circle pull-left"></i></a>
+</h3></ul>
+
+</div>
+            <div  id='data2{{indi}}{{ind}}' class=" panel-collapse collapse "> 
+              <div class="panel-body" *ngFor='let x of datax'>
+                
+                <h5><b>Objective:</b></h5>
+            <h6 >{{x.Objective}}</h6>
+            <br>
+            <h5><b>Topics:</b></h5>
+            <h6 style="white-space:pre"> {{x.Topics}}</h6>
+            <br>
+              <h5><b>Hands on/Demo:</b></h5>
+              <h6 style="white-space:pre">{{x.Demo}}</h6>
+          <br>
+            
+          </div>
+          
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--
+<div class="accordionx">
+    <div class="acitemx">
+         <h3>First Panel</h3>
+
+        <div class="accx">This is the content</div>
+    </div>
+    <div class="acitemx">
+         <h3>Second Panel</h3>
+
+        <div class="accx">This is the content</div>
+    </div>
+    <div class="acitemx">
+         <h3>Third Panel</h3>
+
+        <div class="accx">This is the content</div>
+    </div>
+</div>
+-->

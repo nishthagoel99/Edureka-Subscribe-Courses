@@ -1,0 +1,26 @@
+
+li a{
+    float: left;
+  
+}
+a img{
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+#image{
+    align-content: left;
+    position: relative;
+    float: left;
+}
+.row {
+    float:right;
+}
+.container-fluid{
+    margin-top: 20px;
+    padding-left: 50px;
+  
+}
+.item{
+    color:blue;
+}

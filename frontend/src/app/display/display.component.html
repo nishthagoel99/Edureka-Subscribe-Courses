@@ -1,0 +1,99 @@
+
+<div class="container-fluid text-center" id='maindis'>
+  <div *ngIf='gettoken()'>
+      <br>
+  <h1> Welcome to Edureka!</h1>
+  <br>
+  </div>
+
+  <div *ngIf='!gettoken()'>
+        <h1>Hello {{nameofuser}}</h1>
+        <div *ngIf='admingetflag'>
+          <!--Showing the email ids and passwords details-->
+<button type=button class="btn btn-lg btnx" id='showdata' (click)='getuser()' data-toggle="modal" data-target="#showdataModal" >Show data</button>
+<div class="modal fade in" id="showdataModal">
+              <div class="modal-dialog " >
+                <div class="modal-content">
+                    <div class="modal-body">                  
+          <div *ngIf='display1'>
+            <div class="container text-center" id='tableee'>
+              <div class="row">
+                  <table class="table table-responsive table-hover ">
+                      <thead class="thead-inverse thead-dark">
+                      <tr>
+                          <th class="text-center" style="width:250px">Email</th>
+                          <th class="text-center" style="width: 250px" >Password</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <br>
+                <tr *ngFor="let y of total"><!--total refers to the user data taken from the database-->
+                          <td class="text-center"  >{{y.Email}}</td>
+                          <td class="text-center"  >{{y.Password}}</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>   </div>
+            </div> </div>               
+<div data-dismiss="modal"></div>
+<div class="modal-footer">
+<button type="button" class="btn btn-danger" data-dismiss="modal" id='closebtn' >Close</button>
+</div></div>
+</div></div>
+<!--Done-->
+<br>
+ <button type='button' class="btn btnx btn-lg" (click)='createco()' >Create Course</button>
+<br><br>
+</div>
+<button type='button' class="btn btnx btn-lg" (click)='showsub()'  data-backdrop="static" data-toggle="modal" data-target="#myModal" >Show Subscriptions</button>
+</div>
+</div>
+<br>
+<!--Showing the subscriptions-->
+<div *ngIf='subflag'>
+        <div class="modal fade in" id="myModal">
+                <div class="modal-dialog " >
+                  <div class="modal-content">
+                  
+                    <div class="modal-header">
+                      <h2 class="modal-title text-center">Subscribed Courses!</h2>
+                      <button type="button" class="close"  data-dismiss="modal" (click)='setflag()' >&times;</button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div *ngFor='let x of data' >
+                          <div class="block" (click)='gotopage()'>
+                              <img class="image pull-right" src={{x.CourseImage}}>
+                              <br>
+                              <h5>{{x.CourseTitle}}</h5>
+                          </div>
+                          <br>
+                          </div>
+                        </div>
+            
+                    <div data-dismiss="modal"></div>
+                   
+                    <div class="modal-footer">
+                        <button type="button" id='closebtn' class="btn btn-lg btn-danger"  (click)='setflag()' data-dismiss="modal"  >Close</button>
+                    
+                    </div>
+                  </div>
+                  </div>
+                </div>
+</div>
+<!--done-->
+<div *ngIf='getcountt()'>
+ <app-login></app-login> 
+</div>
+
+<div class='container'>
+    <br>
+    <app-course></app-course>
+    </div>
+    
+
+    <div *ngIf='createflag'>
+            <app-creation></app-creation>
+        </div>
+        
+        

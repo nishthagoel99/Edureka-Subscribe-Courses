@@ -1,0 +1,405 @@
+
+<div class="modal modal1 fade in" id="myModal">
+    <div class="modal-dialog " >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Sign In!</h2>
+          
+          <button type="button" class="close"  (click)="settingcount1()"  data-dismiss="modal" >&times;</button>
+        </div>
+        <div class="modal-body">
+          
+<div class="container text-center">
+  <br>
+       <br>
+            <form  #foorm="ngForm" (ngSubmit)='adduser(foorm)'>
+                <div class="form-group">
+                    <label for='email' class="pull-left">Email</label>
+                    <input type='email'
+                     class='form-control'
+                      name='email'
+                       required 
+                       email
+                       [pattern]="emailPattern"
+                       ngModel
+                       #nameUser="ngModel">
+                </div>
+                <div *ngIf='nameUser?.touched'>
+                    <div class='alert alert-danger' id='message' *ngIf='nameUser.errors?.required'>Email is required!
+                      </div>
+                    </div>
+                <div class="form-group ">
+                   <label for='password' class="pull-left">Password</label>
+                    <input type='password'
+                     class='form-control'
+                      name='password'
+                       required 
+                       minlength="6"
+                       maxlength="6"
+                       ngModel
+                       #passUser='ngModel'>
+                </div>
+                <div *ngIf='passUser?.touched'>
+                    <div class='alert alert-danger' id='message' *ngIf='passUser.errors?.required'>Password is required!
+                      </div>
+                </div>
+                <button type="submit" id='submitbtn' class="btn btn-lg btn-success" [disabled]='foorm.invalid' >Login</button> 
+                <button type='submit' class="btn btn-link"  (click)='clicked()' > Forgot Password?</button> 
+              </form>
+            <button  class="btn btn-googleplus btn-lg" (click)="socialSignIn('google')"><i class="fa fa-google-plus fa-fw"></i> Sign In with Google</button>
+          </div>
+      <br>
+      <div class="text-center">
+            <div *ngIf='!tokenofflag'>
+                    {{gotodisplay()}}
+            </div>
+            <div *ngIf='tokenofflag' id='message'>
+                      {{usermessage}}                      
+            </div>
+        
+      </div>
+      
+     
+            <div class="text-center">
+                  <button type='button' class="btn btn-link" data-toggle="modal" data-backdrop='static' data-dismiss="modal" data-target="#registerModal">Not a user?Register here!</button>
+              </div> 
+        </div>
+        <div data-dismiss="modal"></div>
+        <div class="modal-footer">
+            <button type="button" id='closebtn' (click)="settingcount1()"  class="btn btnzz btn-danger" data-dismiss="modal"  >Close</button>
+           </div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  <button id="openModal" #openModal [hidden]="true" 
+  data-toggle="modal" data-backdrop='static' data-target="#myModal"></button>
+  
+
+
+
+
+
+  <div class="modal fade in" id="registerModal">
+        <div class="modal-dialog " >
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h2 class="modal-title">Sign Up!</h2>
+              
+              <button type="button" class="close"  (click)="settingcount1()" data-dismiss="modal" >&times;</button>
+            </div>
+            <div class="modal-body">
+              
+      <div class="container text-center">
+    
+                <form  #form="ngForm" (ngSubmit)='adduser2(form)'>
+                    <div class="form-group">
+                        <label for='name' class="pull-left">Name</label>
+                        <input type="text"
+                         class='form-control'
+                          name='name'
+                          #name2User="ngModel"
+                           required 
+                           ngModel>
+                    </div>
+                    <div *ngIf='name2User?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='name2User.errors?.required'>Name is required!
+                          </div>
+                      </div>
+
+
+                    <div class="form-group">
+                        <label for='email' class="pull-left">Email</label>
+                        <input type="email"
+                         class='form-control'
+                          name='email'
+                          email
+                          [pattern]="emailPattern"
+                          #nameUser="ngModel"
+                           required 
+                           ngModel>
+                    </div>
+                    <div *ngIf='nameUser?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='nameUser.errors?.required'>Email is required!
+                          </div>
+                      </div>
+                    <div class="form-group">
+                       <label for='password' class="pull-left">Password</label>
+                        <input type='password'
+                         class='form-control'
+                          name='pass1'
+                           required 
+                           minlength="6"
+                           maxlength="6"
+                           ngModel
+                           #passUser='ngModel'>
+                    </div>
+                    <div class="form-group">
+                      <label for='password' class="pull-left">Confirm Password</label>
+                       <input type='password'
+                        class='form-control'
+                         name='pass2'
+                          required 
+                          minlength="6"
+                          maxlength="6"
+                          ngModel
+                          #pass2User='ngModel'>
+                   </div>
+                    <div *ngIf='pass2User?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='passUser.errors?.required'>Password is required!
+                          </div>
+                    </div>
+                  <button type="submit" id='submitbtn1' class="btn btn-lg btn-success" [disabled]='form.invalid' >Sign Up</button>
+                
+                </form>
+                <button  class="btn btn-googleplus btn-lg" (click)="socialSignUp('google')" onclick= " $('.modal').modal('hide')"   ><i class="fa fa-google-plus fa-fw"></i> Sign Up with Google</button>   
+                </div>
+
+          <div class="text-center">
+                    <div  *ngIf='tokenofflag' id='message'>
+                            {{message}}                            
+                        </div>
+            </div>
+            </div>
+            <button type='button' class="btn btn-link " data-toggle="modal" data-backdrop='static' data-dismiss="modal" data-target="#myModal">Already a user?Sign In!</button>
+
+            <div data-dismiss="modal"></div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id='closebtn' class="btn btn-danger"  (click)="settingcount1()" data-dismiss="modal"  >Close</button>
+            
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    
+      <div  class="modal fade in" id="confirmModal">
+        <div class="modal-dialog " >
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h2 class="modal-title">Confirm!</h2>
+              
+              <button type="button" class="close"  (click)="settingcount()"  data-dismiss="modal" >&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              
+    <div class="container text-center">
+      <br>
+           <br>
+                <form  #frm="ngForm" (ngSubmit)='adding(frm)'>
+                    <div class="form-group">
+                        <label for='email' class="pull-left">Email</label>
+                        <input type='email'
+                         class='form-control'
+                          name='email'
+                          #nameUser="ngModel"
+                           required 
+                           email
+                           [pattern]="emailPattern"
+                           [value]='email1'
+                           [(ngModel)]='email1'
+                           >
+                    </div>
+                    <div *ngIf='nameUser?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='nameUser.errors?.required'>Email is required!
+                          </div>
+                        </div>
+                    <div class="form-group ">
+                       <label for='name' class="pull-left">Name</label>
+                        <input type='text'
+                         class='form-control'
+                          name='name'
+                           required 
+                           [value]='name1'
+                           [(ngModel)]='name1'
+                           #passUser='ngModel'>
+                    </div>
+                    <div *ngIf='passUser?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='passUser.errors?.required'>Name is required!
+                          </div>
+                    </div>
+                    <button type="submit" id='submitbtn2' class="btn btn-lg btn-success" [disabled]='frm.invalid' >Confirm</button>    
+                </form>
+              </div>
+          <br>
+          <div class="text-center">
+                <div *ngIf='!tokenofflag'>
+                        {{gotodisplay()}}
+                </div>
+                <div *ngIf='tokenofflag' id='message'>
+                          {{message}}                      
+                </div>
+            
+          </div>
+            </div>
+            <div data-dismiss="modal"></div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id='closebtn' (click)="settingcount()"  class="btn btn-danger" data-dismiss="modal"  >Close</button>
+               </div>
+            
+          </div>
+        </div>
+      </div>
+      <button id="confirm"  #confirm [hidden]="true" data-dismiss="modal" data-toggle="modal"  data-target="#confirmModal" ></button>
+
+
+
+
+
+<!--OTP MODEL-->      
+      <div  class="modal fade in" id="emailModal">
+        <div class="modal-dialog " >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">ENTER OTP!</h2>
+              
+              <button type="button" class="close"  (click)="settingcount()"  data-dismiss="modal" >&times;</button>
+            </div>
+            <div class="modal-body">
+              
+    <div class="container text-center">
+      <br>
+           <br>
+                <form  #faarm="ngForm" (ngSubmit)='adduser3(faarm)'>
+                    <div class="form-group">
+                        <label for='email' class="pull-left">Email</label>
+                        <input type='email'
+                         class='form-control'
+                          name='email'
+                          #nameUser="ngModel"
+                           required 
+                           email
+                           [pattern]="emailPattern"
+                           disabled
+                           [value]='email3'
+                           [(ngModel)]='email3'
+                           >
+                    </div>
+                    <div class="form-group ">
+                       <label for='name' class="pull-left">OTP</label>
+                        <input type='password'
+                         class='form-control'
+                          name='otp'
+                           required 
+                           minlength="4"
+                           maxlength="4"
+                           ngModel
+                           #passUser='ngModel'>
+                    </div>
+                    <div *ngIf='passUser?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='passUser.errors?.required'>OTP is required!
+                          </div>
+                    </div>
+                    <button type="submit" id='submitbtn3' class="btn btn-lg btn-success" onclick= " $('.modal').modal('hide')"  [disabled]='faarm.invalid' >Confirm</button>    
+                </form>
+              </div>
+          <br>
+          <div class="text-center">
+                <div *ngIf='!tokenofflag'>
+                        {{gotodisplay()}}
+                </div>
+                <div *ngIf='tokenofflag' id='message'>
+                          {{umessage}}                      
+                </div>
+            
+          </div>
+            </div>
+            <div data-dismiss="modal"></div>
+            <div class="modal-footer">
+                <button type="button" id='closebtn' (click)="settingcount()"  class="btn btn-danger" data-dismiss="modal"  >Close</button>
+               </div>
+            
+          </div>
+        </div>
+      </div>
+      <button id="emailcon"  #emailcon [hidden]="true" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-target="#emailModal" ></button>
+
+
+
+
+<!--forgot password modal-->
+      <div  class="modal fade in" id="passModal">
+        <div class="modal-dialog " >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">Change Password!</h2>
+              
+              <button type="button" class="close"  (click)="settingcount()"  data-dismiss="modal" >&times;</button>
+            </div>
+            <div class="modal-body">
+              
+    <div class="container text-center">
+      <br>
+           <br>
+                <form  #farm="ngForm" (ngSubmit)='changing(farm)'>
+                    <div class="form-group">
+                        <label for='pass1' class="pull-left">Password</label>
+                        <input type='password'
+                         class='form-control'
+                          name='pass1'
+                          minlength="6"
+                          maxlength="6"
+                          #nameUser="ngModel"
+                           required 
+                         ngModel
+                           >
+                    </div>
+                    <div *ngIf='nameUser?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='nameUser.errors?.required'>Password is required!
+                          </div>
+                        </div>
+                    <div class="form-group ">
+                       <label for='pass2' class="pull-left">Confirm Password</label>
+                        <input type='password'
+                         class='form-control'
+                          name='pass2'
+                           required
+                           minlength="6"
+                           maxlength="6"
+                           ngModel
+                           #passUser='ngModel'>
+                    </div>
+                    <div *ngIf='nameUser?.touched'>
+                      <div class='alert alert-danger' id='message' *ngIf='nameUser.errors?.required'>Password is required!
+                        </div>
+                  </div>
+                    <div *ngIf='passUser?.touched'>
+                        <div class='alert alert-danger' id='message' *ngIf='passUser.errors?.required'>Password is required!
+                          </div>
+                    </div>
+                    <button type="submit" id='submitbtn5' class="btn btn-lg btn-success" [disabled]='farm.invalid' >Confirm</button>    
+                </form>
+              </div>
+          <br>
+          <div class="text-center">
+                <div *ngIf='!tokenofflag'>
+                        {{gotodisplay()}}
+                </div>
+                <div *ngIf='tokenofflag' id='message'>
+                          {{umessage2}}                      
+                </div>
+            
+          </div>
+            </div>
+            <div data-dismiss="modal"></div>
+            <div class="modal-footer">
+                <button type="button" id='closebtn' (click)="settingcount()"  class="btn btn-danger" data-dismiss="modal"  >Close</button>
+               </div>
+            
+          </div>
+        </div>
+      </div>
+      <button id="passcon"  #passcon [hidden]="true" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-target="#passModal" ></button>

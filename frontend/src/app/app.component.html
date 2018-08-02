@@ -1,0 +1,17 @@
+<br>
+<div class='container-fluid' >
+    <a><img class='img-responsive pull-left' id='image' routerLink='/' style="width: 200px;" src='assets/edureka-logo.png'></a> 
+  <div class="row" id='row'>
+ <ul class="nav nav-pills pull-right">
+<li>
+<a class="nav-link" routerLink='/' routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+<li ><a class="btn btn-link " routerLink='/' *ngIf='!authenticated' (click)='count()'><span class="glyphicon glyphicon-log-in"></span>  Login </a> </li>
+<li><a class="btn btn-link"  routerLink='/'  *ngIf='authenticated' (click)='setcount()'  ><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+        </ul>  
+    </div>
+  </div>
+  <br>
+  <div  >
+    <router-outlet></router-outlet>
+  </div>
+  

@@ -1,0 +1,28 @@
+*:focus{
+    outline: 0;
+}
+.block{
+    margin: 20px;
+    height:250px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+.block:hover{
+    transform: scale(1.2);
+    outline: none;
+}
+#coloum{
+    position: relative;
+}
+.row{
+    padding: 10px;
+}
+#image{
+    height:100px;
+}
+a{
+    text-decoration: none;
+}
+h5{
+    font-family: Georgia;
+}

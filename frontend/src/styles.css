@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+    font-size: unset;
+}
+.day {
+    background-color: white;
+    color: black;
+}
+.night{
+    background-color: #121314;
+    color:honeydew;
+}
+.btn5{
+    background-color:white;
+    color: white;
+}
+.containerxx{
+    color: black;
+    background-color: honeydew;
+}
+.containei{
+    background-color: initial;
+}
+#but{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}

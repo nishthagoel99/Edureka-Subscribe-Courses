@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Edureka</title>
+  <base href="/">
+  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+</head>
+<script>
+    function setday(){
+       body.className='day';
+       localStorage.setItem('counttt',0);
+     }
+     function setnight(){
+       localStorage.setItem('counttt',1);
+       body.className='night';
+     }
+     function reset(){
+       console.log(localStorage.getItem('counttt'));
+       var v=localStorage.getItem('counttt');
+       if(v==0){
+         setday();
+       }else{
+         setnight();
+       }
+     }
+   
+   
+   </script>
+<body id='body' onload="reset()" >
+  <div id='but'>
+      <button type='button'  class="btn btn-success btn-lg" onclick='setday()'>Day</button> 
+      <button type='button'  class="btn btn-danger btn-lg" onclick="setnight()">Night</button>
+  </div>
+  <app-root></app-root>
+</body>
+</html>

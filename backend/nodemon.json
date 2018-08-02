@@ -1,0 +1,10 @@
+{
+    "env":{
+        "JWT_ADMINKEY":"secretkey",
+        "JWT_USERKEY":"publickey",
+        "hashed_key":"secret",
+        "MJ_APIKEY_PUBLIC":"fefb093d8984621281d8c1ad66cc176c",
+        "MJ_APIKEY_PRIVATE":"57c84a54645dac41c1409b9bf4cb4c82"
+
+    }
+}

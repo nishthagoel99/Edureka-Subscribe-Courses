@@ -1,0 +1,54 @@
+#tableee{
+    background-color:#F1E9E7;
+    padding:10px;
+    color: black;
+}
+.col-sm-6{
+    text-align: center;
+    letter-spacing: 3px;    
+}
+h1{
+    letter-spacing: 5px;
+    padding-top: 20px;
+    font-family: Georgia;
+    font-size: 50px;
+    color: white;
+}
+#showdata{
+    margin-top: 10px;
+    letter-spacing: 3px;
+}
+#myModal{
+    color: black;
+    padding:10px;
+}
+#showdataModal{
+    color: black;
+}
+.image{
+    height: 100px;
+}
+.block{
+    padding: 20px;
+    cursor: pointer;
+}
+#maindis{
+   background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/J9H9WF0/glowing-blue-white-dot-particles-flickering-on-a-dark-blue-background-imitating-a-night-sky-full-of-stars_bhddbph4l_thumbnail-full01.png');
+   background-attachment: fixed;
+}
+.btnx {
+    background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+    color: black;
+    flex: 1 1 auto;
+    margin: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+.btnx:hover {
+    background-position: right center; /* change the direction of the change here */
+  }

@@ -1,0 +1,21 @@
+<div class="container">
+  
+  <div *ngFor='let x of courses,let ind=index' (click)='getname(x)'  routerLink='/coursedetail'>
+    <div *ngIf='ind%4==0'> <!--making rows of 4 coloumns-->
+      <div class="row">
+      </div>
+    </div>
+    <div class="col-md-3 text-center" id='coloum'   >
+      <a><div class='block'  >
+          <img src={{x.CourseImage}} id='image'>
+          <br><br>
+          <h5> {{x.CourseTitle}}</h5>
+          <br>
+          <h6 class="text-left" >Rating: {{x.CourseRating}}</h6>
+          <h6 class="text-right"><b>Price: <i class="fa fa-inr"></i> {{x.CourseValue}}</b></h6>
+         
+      </div>
+    </a>
+    </div>
+  </div>
+     </div>

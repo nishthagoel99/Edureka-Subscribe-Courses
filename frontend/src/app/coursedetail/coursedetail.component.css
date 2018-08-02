@@ -1,0 +1,99 @@
+#image{
+    margin-left: 100px;
+    width:350px;
+    max-height: 250px;
+    height: auto;
+    align-content: center;   
+}
+#image:hover{
+    opacity: 1;
+}
+.prevideopanel{
+    text-align: center;
+    cursor: pointer;
+    position: relative;;
+}
+
+.container-fluid{
+    display: block;
+   
+    font-family: 'Times New Roman';
+}
+.heading1{
+    word-spacing: 2px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: Georgia;
+    color:whitesmoke;
+    padding: 20px;
+    background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/J9H9WF0/glowing-blue-white-dot-particles-flickering-on-a-dark-blue-background-imitating-a-night-sky-full-of-stars_bhddbph4l_thumbnail-full01.png');
+    background-attachment: fixed;
+}
+.overlay{
+    margin-left: 100px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+	background:rgb(0,0,0);
+	background:rgba(0,0,0,0.5);
+    color:white;
+    width: 350px;
+    height: 30px;
+    padding-top: 0;
+    margin-top:0px;
+    text-align: center;
+    align-self: center;
+}
+.icon{
+    color: white;
+    position: absolute;
+    top: 80px;
+    height: 60px;
+    opacity: 0.6;
+    transition: transform 0.2s
+}
+.prevideopanel:hover .icon{
+    transform: scale(1.2);
+    opacity: 1;
+}
+#myModal{
+    position: absolute;
+    max-height: 100%;
+    height: auto;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+    font-family: Georgia;
+    text-align: center;
+    width: auto;
+}
+.modal-header{
+    color: black;
+    background-color: cornsilk;  
+}
+.share-base {
+     padding:4px; 
+     font-size:22px; 
+     cursor:pointer;
+      width:100px;
+       text-align:center; 
+       border-radius:3px;
+ }
+.share-twitter { background:#55ACEE; color:white; padding:5px 4px 3px 4px;}
+.share-facebook { background:#3B5998; color:white; padding:5px 4px 3px 4px; }
+.share-linked-in { background:#0077B5; color:white; padding:5px 4px 3px 4px;}
+.share-google-plus { background:#DD4B39; color:white; padding:6px 4px 2px 4px; }
+h2{
+    font-style: italic;
+    margin-left: 20px;
+}
+.col-md-3{
+text-align: center;
+
+}
+a.fa {
+    text-decoration: none;
+    border-radius: 60px;
+    box-shadow: 0px 2px 2px #888;
+    padding: 0.5em 0.6em;
+  
+  }
