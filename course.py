@@ -1,29 +1,34 @@
-import bs4;
+import bs4
 import requests
 import mysql.connector
 res=requests.get('https://www.edureka.co')
 soup=bs4.BeautifulSoup(res.text,'html.parser')
-coursetiles=soup.findAll('div',{'class':'course_tile'}) 
+c=soup.find('section',{'class':'trendingmain'})
+coursetiles=c.findAll('a',{'class':'homecardmain'}) 
+print(coursetiles)
 count=0
 courserating=0
-
-con=mysql.connector.connect(host='localhost' ,password="",user="root",database="courses") #connecting with the database
+con=mysql.connector.connect(host='localhost' ,password='root',user='root',database="courses",unix_socket='/Applications/MAMP/tmp/mysql/mysql.sock') #connecting with the database
 cur=con.cursor()
-
+print('hey')
 for x in coursetiles:
-	coursetitle=x.find('div',{'class':'course_title'})
+	coursetitle=x.find('h3',{'class':'coursetitle'})
 	coursetitle=coursetitle.string.strip() #removing the unwanted spaces 
-	courseratings=x.find('div',{'class':'course_rating'})
-	stars=courseratings.findAll('i',{'class':'fa fa-star icon-fa-star-full'})
-	for star in stars:
-		courserating=courserating+1
-	coursevalues=x.find('div',{'class':'course_value'})
-	courseval=coursevalues.find('span',{'class':'after_discount'})
+	print(coursetitle)
+
+	courseratings=x.find('div',{'class':'reviewicons'})
+	courserating=courseratings.find('span',{'class':'rating'})
+	print(courserating)
+	courserating=courserating.string.strip()
+	print(courserating)
+
+	coursevalues=x.find('div',{'class':'courseprsec'})
+	courseval=coursevalues.find('span',{'class':'actualpr'})
 
 	for c in courseval:
 		coursevalue=c.string.strip()
-
-	courseimages=x.find('div',{'class':'course_graphic'})
+		print(coursevalue)
+	courseimages=x.find('div',{'class':'courseimgmain'})
 	images=courseimages.findAll('img')
 	for alt in images:
 		courseimage=alt.get('data-src')
