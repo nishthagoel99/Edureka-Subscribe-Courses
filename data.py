@@ -1,19 +1,20 @@
 import requests
 import bs4
 import mysql.connector
-
-
-con=mysql.connector.connect(host="localhost",password="",user="root",db="courses")
+con=mysql.connector.connect(host='localhost',user='root',password='root',db='courses',unix_socket='/Applications/MAMP/tmp/mysql/mysql.sock')
 cur= con.cursor()
 
 res=requests.get('https://www.edureka.co/cloudcomputing')
 soup=bs4.BeautifulSoup(res.text,'html.parser')
-thislist=['Curriculum','Description','Project','Features','Faq','Certification','Reviews']
+thislist=['curriculum','description','certification','reviews','projects','features','faqs']
 for liste in thislist:
 	containers=soup.findAll('div',{'id':liste})
 	for container in containers:
-		title=container.find('h3',{'class':'panel-title'})
+		print(container)
+
+		title=container.find('h2',{'class':'panel-title'})
 		title=title.text.strip()
+		print(title)
 		data=container.findAll('div',{'class':'panel-default'})
 		for do in data:	
 			body=do.find('div',{'class':'panel-collapse'})
@@ -29,7 +30,6 @@ for liste in thislist:
 					demo='No demo in Particular'
 			if 'Topics:' not in body.text:
 				objective=body.text.strip()
-			
 			cur.execute(("INSERT INTO aws(Main,Heading,Objective,Topics,Demo) VALUES(%s,%s,%s,%s,%s)"),(title,heading,objective,topics,demo))
 									
 cur.execute('SELECT * FROM aws')
